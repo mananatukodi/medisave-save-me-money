@@ -20,6 +20,15 @@ dependencies = [
     "cryptography>=43",
 ]
 
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+# Explicit, narrow discovery: ship only the application package.
+# `alembic`, `scripts`, and `tests` are NOT part of the install.
+include = ["app*"]
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.3",
