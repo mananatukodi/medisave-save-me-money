@@ -1,0 +1,44 @@
+# MediSave AI — local development stack (Phase 3, spec §21).
+# Copy .env.example to .env first:  cp .env.example .env
+# Usage:
+#   docker compose up -d postgres     # start PostgreSQL only
+#   docker compose up -d --build      # start postgres + backend
+#   docker compose exec backend alembic upgrade head   # migrations (auto-run by backend too)
+# NEVER put real production credentials in this file — use .env (git-ignored).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-medisave}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-medisave_dev_only}
+      POSTGRES_DB: ${POSTGRES_DB:-medisave}
+    ports:
+      - "5432:5432"
+    volumes:
+      - medisave_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-medisave} -d ${POSTGRES_DB:-medisave}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  backend:
+    build: ./backend
+    environment:
+      MEDISAVE_ENV: dev
+      MEDISAVE_SECRET_KEY: ${MEDISAVE_SECRET_KEY:-dev-only-change-me-in-any-shared-env}
+      MEDISAVE_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-medisave}:${POSTGRES_PASSWORD:-medisave_dev_only}@postgres:5432/${POSTGRES_DB:-medisave}
+      MEDISAVE_DEMO_MODE: ${MEDISAVE_DEMO_MODE:-true}
+      MEDISAVE_SEED_ON_STARTUP: "true"
+      MEDISAVE_CORS_ORIGINS: '["http://localhost:5173","http://localhost:3000"]'
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Apply migrations, then start the API.
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+volumes:
+  medisave_pgdata:

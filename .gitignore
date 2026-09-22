@@ -1,0 +1,60 @@
+# ---- Python / backend ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+backend/.env
+backend/*.db
+backend/*.sqlite3
+
+# ---- Node / admin ----
+node_modules/
+dist/
+.vite/
+admin/.env
+admin/.env.local
+
+# ---- Flutter / mobile ----
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+*.ipr
+*.iws
+
+# ---- Env & secrets (NEVER commit real secrets) ----
+.env
+.env.*
+!.env.example
+
+# ---- Android / Flutter release artifacts (NEVER commit) ----
+*.keystore
+*.jks
+*.apk
+*.aab
+*.idsig
+.gradle/
+
+# ---- Local run artifacts (transient) ----
+*.tsbuildinfo
+backend/smoke8_*.txt
+backend/pytest_*.txt
+backend/smoke-uvicorn*.log
+
+# ---- Local runtime data (encrypted vault blobs etc.) — never commit ----
+backend/data/
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
