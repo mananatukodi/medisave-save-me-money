@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#087d72" />
+    <title>MediSaveAI — Save Me Money</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar"><a href="#home" class="brand" aria-label="MediSaveAI home"><span class="brand-mark">✦</span><span>MediSave<span>AI</span></span></a><div class="header-actions"><button class="language" id="languageButton" aria-label="Switch language">EN <span>⌄</span></button><button class="avatar" aria-label="Open your profile">RS</button></div></header>
+    <main id="main">
+      <section id="home" class="hero panel">
+        <div class="hero-copy"><p class="eyebrow">ONE PATIENT. ONE SECURE HEALTH PROFILE.</p><h1>Your health journey,<br><em>clearer and closer.</em></h1><p class="lede">Find care, understand your options, and discover potential savings — all in one safe place.</p><label class="search" for="care-search"><span aria-hidden="true">⌕</span><input id="care-search" placeholder="What healthcare help do you need?" /><kbd>⌘ K</kbd></label><p class="search-hint" id="searchHint" role="status">Try “eye specialist”, “medical bill”, or “scheme eligibility”.</p></div>
+        <aside class="emergency-card"><div class="emergency-icon" aria-hidden="true">+</div><p class="eyebrow">NEED HELP NOW?</p><h2>Emergency</h2><p>Quick access to ambulance, nearby hospitals, and your emergency profile.</p><button class="emergency-button" id="emergencyButton">Get emergency help <span>→</span></button><small>This does not replace emergency services. Call your local emergency number for immediate help.</small></aside>
+      </section>
+      <section class="actions-section" aria-labelledby="services-title"><div class="section-heading"><div><p class="eyebrow">START HERE</p><h2 id="services-title">How can we support you?</h2></div><button class="text-button" id="showAll">View all services <span>→</span></button></div><div class="service-grid" id="serviceGrid"></div></section>
+      <section class="journey-grid"><article class="journey panel"><div class="section-heading"><div><p class="eyebrow">MY CARE</p><h2>Keep your next steps in view</h2></div><a href="#appointments">View care plan →</a></div><div class="appointment"><div class="date-box"><strong>12</strong><span>SEP</span></div><div><p class="tag">UPCOMING APPOINTMENT</p><h3>General consultation</h3><p>10:30 AM · Appointment requested</p></div><button class="round-button" aria-label="View appointment">→</button></div><div class="care-note"><span>✓</span><p><strong>Before you go</strong><br>Prepare questions and choose the records you want to share.</p><button data-open="questions">Prepare</button></div></article>
+        <article class="money panel"><p class="eyebrow">MY MONEY</p><h2>Understand costs before you decide.</h2><p>Upload a bill or estimate a procedure to organize your information and prepare questions for the billing desk.</p><div class="money-actions"><button data-open="bill">Review a bill <span>→</span></button><button class="outline" data-open="calculator">Cost calculator</button></div><div class="money-disclaimer">Potential savings are estimates, not guarantees.</div></article></section>
+      <section class="health-overview" aria-labelledby="health-title"><div class="section-heading"><div><p class="eyebrow">MY HEALTH</p><h2 id="health-title">Your health at a glance</h2></div><a href="#records">Open health profile →</a></div><div class="overview-grid"><article><span class="overview-icon teal">▣</span><div><strong>Health records</strong><p>Keep prescriptions, reports, and documents together.</p></div><button data-open="records">Open</button></article><article><span class="overview-icon amber">◷</span><div><strong>2 reminders</strong><p>Medicine and follow-up reminders are ready.</p></div><button data-open="reminders">View</button></article><article><span class="overview-icon lilac">♙</span><div><strong>Family health</strong><p>Manage profiles with controlled access.</p></div><button data-open="family">Manage</button></article></div></section>
+      <section class="privacy-banner"><div class="privacy-lock">⌑</div><div><p class="eyebrow">YOUR DATA, YOUR CONTROL</p><h2>Share only what you choose.</h2><p>Select records, select a recipient, set an access duration, and revoke access any time.</p></div><button data-open="privacy">Manage sharing <span>→</span></button></section>
+    </main>
+    <nav class="bottom-nav" aria-label="Primary navigation"><a class="active" href="#home"><span>⌂</span>Home</a><a href="#care"><span>♧</span>My Care</a><a href="#assistant" id="assistantNav"><span>✦</span>Ask AI</a><a href="#records"><span>▣</span>Records</a><a href="#more"><span>☷</span>More</a></nav>
+    <dialog id="actionDialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow" id="dialogEyebrow">MEDISAVEAI</p><h2 id="dialogTitle">Let’s get started</h2><p id="dialogText"></p><button class="primary-dialog">Continue</button></dialog>
+    <script src="src/app.js"></script>
+  </body>
+</html>

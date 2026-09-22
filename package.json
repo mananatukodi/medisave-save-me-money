@@ -1,0 +1,11 @@
+{
+  "name": "medisaveai-save-me-money",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "test": "node --test"
+  },
+  "devDependencies": { "vite": "^6.1.0" }
+}
